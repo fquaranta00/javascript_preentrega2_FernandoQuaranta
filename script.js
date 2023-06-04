@@ -3,7 +3,9 @@
 Programa para gestion en salud, de pacientes y obras sociales
 En el mismo encontraran 1 funcion y 1 Switch:
                 1. Función de login
-                2. Switch para seleccionar paciente e informacion general
+                2. Función para agregar usuario
+                3. Función para validar login   
+                4. Switch para seleccionar acción
 */
 
 //Comienzo funcion login
@@ -112,122 +114,45 @@ if (intentos === 0) {
         }
     }
 
-    // for(let paciente of pacientes) {
-    // console.log(pacientes.nombre);
-    // }
-    let listadoPacientes = confirm("Desea ver el listado de Pacientes? ");
-    if (listadoPacientes) {
+    let opcionesAccion = prompt(
+        "Seleccione acción:\n1. Listado PAcientes\n2. Listado Obras Sociales"
+    );
 
-        let mensaje = "Pacientes:\n\n";
-        for (let i = 0; i < pacientes.length; i++) {
-            let paciente = pacientes[i];
-            mensaje = mensaje + "Nombre: " + paciente.nombre + "\n";
-            mensaje = mensaje + "Apellido: " + paciente.apellido + "\n";
-            mensaje = mensaje + "Edad: " + paciente.edad + "\n";
-            mensaje = mensaje + "Obra Social: " + paciente.obraSocial + "\n";
-            mensaje = mensaje + "Estado: " + paciente.estado + "\n\n";
-        }    
-        alert(mensaje);
+
+    // Comienzo del switch
+    let continuar = true;
+
+    while (continuar) {
+        let opcionesAccion = prompt("Ingrese la opción que desea realizar:\n1. Ver listado de pacientes\n2. Ver listado de Obras Sociales");
+
+        switch (opcionesAccion) {
+            case "1":
+                    let mensaje = "Pacientes:\n\n";
+                    for (let i = 0; i < pacientes.length; i++) {
+                        let paciente = pacientes[i];
+                        mensaje = mensaje + "Nombre: " + paciente.nombre + "\n";
+                        mensaje = mensaje + "Apellido: " + paciente.apellido + "\n";
+                        mensaje = mensaje + "Edad: " + paciente.edad + "\n";
+                        mensaje = mensaje + "Obra Social: " + paciente.obraSocial + "\n";
+                        mensaje = mensaje + "Estado: " + paciente.estado + "\n\n";
+                    }
+                    alert(mensaje);
+                break;
+
+            case "2":
+                    console.log("Listado de Obras Sociales");
+                    let obrasSociales = pacientes.map((paciente) => paciente.obraSocial);
+                    let mensaje1 = "Obras Sociales:\n\n" + obrasSociales.join("\n");
+                    alert(mensaje1);
+                break;
+
+            default:
+                console.log("Opción inválida");
+                break;
+        }
+
+        continuar = confirm("Quiere volver a consultar alguna opción");
     }
 
-
-    let listadoOC = confirm("Desea ver el listado de Obras Sociales? ");
-
-
-    if (listadoOC) {
-        console.log("Listado de Obras Sociales");
-        pacientes.forEach(paciente => { alert(paciente.obraSocial) });//hacemos un listado de cantidad de pacientes por obra social
-    }
+    console.log("Fin del programa");
 }
-
-
-//   let numeroPaciente = prompt(
-//     "Seleccione el paciente:\n1. Juancito Perez\n2. Francisca Lemes\n3. Jacinto Ceres"
-//   );
-
-
-//   // Comienzo del switch
-//   switch (numeroPaciente) {
-//     case "1":
-//       // Información del paciente Juancito Perez
-//       let nombrePaciente1 = "Juancito";
-//       let apellidoPaciente1 = "Perez";
-//       let obraSocialPaciente1 = "Obra Social A";
-//       let sesionesTotalesPaciente1 = 10;
-//       let sesionesEfectuadasPaciente1 = prompt("Indique sesiones efectuadas: ");
-
-//       console.log(
-//         "Nombre y apellido: " + nombrePaciente1 + " " + apellidoPaciente1
-//       );
-//       console.log("Obra social: " + obraSocialPaciente1);
-//       console.log("Sesiones totales: " + sesionesTotalesPaciente1);
-//       console.log("Sesiones efectuadas: " + sesionesEfectuadasPaciente1);
-
-//       alert("Nombre y apellido: " + nombrePaciente1 + " " + apellidoPaciente1);
-//       alert("Obra social: " + obraSocialPaciente1);
-//       alert("Sesiones totales: " + sesionesTotalesPaciente1);
-//       alert("Sesiones efectuadas: " + sesionesEfectuadasPaciente1);
-
-//       // For bastante inutil pero es el único que se me ocurrió je, perdón
-//       for (let i = 1; i <= sesionesEfectuadasPaciente1; i++) {
-//         console.log("Sesión " + i + ": Realizada");
-//       }
-//       break;
-
-//     case "2":
-//       // Información del paciente Francisca Lemes
-//       let nombrePaciente2 = "Francisca";
-//       let apellidoPaciente2 = "Lemes";
-//       let obraSocialPaciente2 = "Obra Social B";
-//       let sesionesTotalesPaciente2 = 15;
-//       let sesionesEfectuadasPaciente2 = prompt("Indique sesiones efectuadas: ");
-
-//       console.log(
-//         "Nombre y apellido: " + nombrePaciente2 + " " + apellidoPaciente2
-//       );
-//       console.log("Obra social: " + obraSocialPaciente2);
-//       console.log("Sesiones totales: " + sesionesTotalesPaciente2);
-//       console.log("Sesiones efectuadas: " + sesionesEfectuadasPaciente2);
-
-//       alert("Nombre y apellido: " + nombrePaciente2 + " " + apellidoPaciente2);
-//       alert("Obra social: " + obraSocialPaciente2);
-//       alert("Sesiones totales: " + sesionesTotalesPaciente2);
-//       alert("Sesiones efectuadas: " + sesionesEfectuadasPaciente2);
-
-//       //bucle for
-//       for (let i = 1; i <= sesionesEfectuadasPaciente2; i++) {
-//         console.log("Sesión " + i + ": Realizada");
-//       }
-//       break;
-
-//     case "3":
-//       // Información del paciente Jacinto Ceres
-//       let nombrePaciente3 = "Jacinto";
-//       let apellidoPaciente3 = "Ceres";
-//       let obraSocialPaciente3 = "Obra Social C";
-//       let sesionesTotalesPaciente3 = 8;
-//       let sesionesEfectuadasPaciente3 = prompt("Indique sesiones efectuadas: ");
-
-//       console.log(
-//         "Nombre y apellido: " + nombrePaciente3 + " " + apellidoPaciente3
-//       );
-//       console.log("Obra social: " + obraSocialPaciente3);
-//       console.log("Sesiones totales: " + sesionesTotalesPaciente3);
-//       console.log("Sesiones efectuadas: " + sesionesEfectuadasPaciente3);
-
-//       alert("Nombre y apellido: " + nombrePaciente3 + " " + apellidoPaciente3);
-//       alert("Obra social: " + obraSocialPaciente3);
-//       alert("Sesiones totales: " + sesionesTotalesPaciente3);
-//       alert("Sesiones efectuadas: " + sesionesEfectuadasPaciente3);
-
-//       //bucle for
-//       for (let i = 1; i <= sesionesEfectuadasPaciente3; i++) {
-//         console.log("Sesión " + i + ": Realizada");
-//       }
-//       break;
-
-//     default:
-//       console.log("Opción inválida");
-//       break;
-//   }
-// }
